@@ -29,7 +29,7 @@ type AppProps = {
   apiKey: string;
   userToConnect: { id: string; name?: string; image?: string };
   userToken: string | undefined;
-  targetOrigin: string;
+  // targetOrigin: string;
   channelListOptions: {
     options: ChannelOptions;
     filters: ChannelFilters;
@@ -38,14 +38,21 @@ type AppProps = {
 };
 
 const App = (props: AppProps) => {
-  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions } = props;
+  const {
+    apiKey,
+    userToConnect,
+    userToken,
+    // targetOrigin,
+    channelListOptions
+  } = props;
   const [isCreating, setIsCreating] = useState(false);
 
   const chatClient = useConnectUser<StreamChatGenerics>(apiKey, userToConnect, userToken);
   const toggleMobile = useMobileView();
-  const theme = useTheme(targetOrigin);
+  // const theme = useTheme(targetOrigin);
+  const theme = 'str-chat__theme-light';
 
-  useChecklist(chatClient, targetOrigin);
+  // useChecklist(chatClient, targetOrigin);
   useUpdateAppHeightOnResize();
 
   if (!chatClient) {

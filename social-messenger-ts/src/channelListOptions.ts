@@ -8,12 +8,9 @@ import type { ChannelFilters, ChannelOptions, ChannelSort } from 'stream-chat';
  * @param user the user id.
  */
 export const getChannelListOptions = (
-  disableChannelNameFilter: boolean,
   user: string | undefined,
 ) => {
-  const filters: ChannelFilters = disableChannelNameFilter
-    ? { type: 'messaging', members: { $in: [user!] } }
-    : { type: 'messaging', name: 'Social Demo', demo: 'social' };
+  const filters: ChannelFilters = { type: 'messaging', members: { $in: [user!] } };
 
   const options: ChannelOptions = { state: true, watch: true, presence: true, limit: 8 };
 
