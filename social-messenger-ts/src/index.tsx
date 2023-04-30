@@ -8,8 +8,16 @@ import { getChannelListOptions } from './channelListOptions';
 
 const apiKey = process.env.REACT_APP_STREAM_KEY;
 const urlParams = new URLSearchParams(window.location.search);
-const user = urlParams.get('user') || process.env.REACT_APP_USER_ID;
-const userToken = urlParams.get('user_token') || process.env.REACT_APP_USER_TOKEN;
+let user = urlParams.get('user') || process.env.REACT_APP_USER_ID;
+let userToken = urlParams.get('user_token') || process.env.REACT_APP_USER_TOKEN;
+
+if (!user) {
+    user = prompt('user') || undefined;
+}
+
+if (!userToken) {
+    userToken = prompt('userToken') || undefined;
+}
 
 const skipNameImageSet = urlParams.get('skip_name_image_set') || false;
 
